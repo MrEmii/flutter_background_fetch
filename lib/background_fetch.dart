@@ -612,8 +612,9 @@ class BackgroundFetch {
 
     int? callbackHandler = PluginUtilities.getCallbackHandle(callback)?.toRawHandle();
 
+    assert(callbackHandler != null, "Failed to get callback id: Check whetever the callback is a top-level or static function");
     if(callbackHandler == null) {
-      print('[BackgroundFetch registerHeadlessTask] ERROR: Failed to get callback id: Check whetever the callback is a op-level or static function');
+      print('[BackgroundFetch registerHeadlessTask] ERROR: Failed to get callback id: Check whetever the callback is a top-level or static function');
     }
     // Two callbacks:  the provided headless-task + _headlessRegistrationCallback
     List<int> args = [
